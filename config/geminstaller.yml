@@ -2,6 +2,9 @@
 defaults:
   install_options: --no-ri --no-rdoc
 gems:
+- name: eycap
+  version: ~> 0.3.11
+  install_options: --source=http://gems.engineyard.com
 - name: rails
   version: 2.3.2
 - name: rake
