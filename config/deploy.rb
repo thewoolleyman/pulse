@@ -14,10 +14,19 @@ role :db,  "ci.rubyonrails.org"
 
 after "deploy:symlink", "deploy:geminstaller"
 after "deploy:update_code", "deploy:symlink_configs"
+after "deploy:update_code", "deploy:symlink_site_keys"
 
 namespace :deploy do
   task :default do
     deploy.long
+  end
+
+  desc "Link the config/initializers/site_keys.rb file into the current release path."
+  task :symlink_site_keys, :roles => :app, :except => {:no_release => true} do
+    run <<-CMD
+      cd #{latest_release} &&
+      ln -nfs #{shared_path}/config/initializers/site_keys.rb #{latest_release}/config/initializers/site_keys.rb
+    CMD
   end
 
   task :geminstaller, :roles => :app do

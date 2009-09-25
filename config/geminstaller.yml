@@ -2,6 +2,8 @@
 defaults:
   install_options: --no-ri --no-rdoc
 gems:
+- name: capistrano
+  version: ~> 2.5.9
 - name: eycap
   version: ~> 0.3.11
   install_options: --source=http://gems.engineyard.com
