@@ -25,7 +25,7 @@ namespace :deploy do
   task :symlink_site_keys, :roles => :app, :except => {:no_release => true} do
     run <<-CMD
       cd #{latest_release} &&
-      ln -nfs #{shared_path}/config/initializers/site_keys.rb #{latest_release}/config/initializers/site_keys.rb
+      ln -nfs #{shared_path}/config/site_keys.rb #{latest_release}/config/initializers/site_keys.rb
     CMD
   end
 
